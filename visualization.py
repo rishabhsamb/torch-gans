@@ -28,7 +28,7 @@ def display_image_grid(images):
         num_row, num_col, figsize=(1.5*num_col, 2*num_row))
     for i in range(num_row * num_col):
         ax = axes[i//num_col, i % num_col]
-        ax.imshow(images[i], cmap='gray')
+        ax.imshow(images[i], cmap='Greys')
     plt.tight_layout()
     plt.savefig("images.png")
     # for i, img in enumerate(images):

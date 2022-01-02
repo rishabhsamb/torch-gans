@@ -101,7 +101,7 @@ if __name__ == "__main__":
     generator = Generator(noise_length=noise_length).to(device=device)
     discriminator = Discriminator().to(device=device)
 
-    train_set, _ = create_dataloaders_mnist(
+    train_set = create_dataloaders_mnist(
         epochs*minibatch_size, minibatch_size)
 
     # train_set = [next(iter(train_set))[0, :, :] for i in range(10)]

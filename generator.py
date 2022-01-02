@@ -24,5 +24,5 @@ class Generator(nn.Module):
         x = self.fc3(x)
         x = F.leaky_relu(x, 0.2, inplace=True)
         x = self.fc4(x)
-        x = F.leaky_relu(x, 0.2, inplace=True)
+        x = torch.tanh(x)
         return x
