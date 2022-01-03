@@ -10,7 +10,12 @@ By adding slight perturbations to a few random noise vectors, we can see how the
 
 ---
 ### Visualizations
+
 Here we have small perturbations to an initial random noise vector:
+
 ![small perturbation gif](https://github.com/rishabhsamb/torch-gans/blob/master/vanilla-gan/gifs/0.1%20interpolation.gif)
+
+
 Here we have larger perturbations to another random noise vector:
+
 ![large perturbation gif](https://github.com/rishabhsamb/torch-gans/blob/master/vanilla-gan/gifs/0.5%20interpolation.gif)
