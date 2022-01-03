@@ -21,10 +21,10 @@ class Discriminator(nn.Module):
         x = F.leaky_relu(x, 0.2, inplace=True)
         x = F.dropout(x, 0.3)
         x = self.fc2(x)
-        x = F.leaky_relu(x, 0.2, inplace=True)        
+        x = F.leaky_relu(x, 0.2, inplace=True)
         x = F.dropout(x, 0.3)
         x = self.fc3(x)
-        x = F.leaky_relu(x, 0.2, inplace=True)    
+        x = F.leaky_relu(x, 0.2, inplace=True)
         x = F.dropout(x, 0.3)
         x = self.fc4(x)
         return x

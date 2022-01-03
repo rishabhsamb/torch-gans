@@ -31,7 +31,3 @@ def display_image_grid(images):
         ax.imshow(images[i], cmap='Greys')
     plt.tight_layout()
     plt.savefig("images.png")
-    # for i, img in enumerate(images):
-
-    #     axs[i].imshow(images[i], cmap="gray")
-    #     plt.savefig("image-{i}.png")

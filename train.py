@@ -12,6 +12,7 @@ from visualize_images import get_visualization
 
 random_seed = 1729
 torch.manual_seed(random_seed)
+visualization_samples = 10
 
 noise_prior = torch.distributions.normal.Normal(
     torch.tensor([0.0]), torch.tensor([1.0]))
@@ -31,7 +32,6 @@ def train(discriminator, generator, train, device):
     optimizer_discriminator = Adam(params=discriminator.parameters(), lr=lr)
 
     for i in tqdm.tqdm(range(epochs)):
-        # print(f"EPOCH {i+1} of {epochs}")
         for x, _ in train:
             x = torch.flatten(x, start_dim=1)
             x = x.to(device=device)
@@ -48,7 +48,6 @@ def train(discriminator, generator, train, device):
                 discriminator(generator(muh_noise)), zeroes)
 
             d_loss = real_loss + fake_loss
-            # print(f"Discriminator Loss: {d_loss}")
 
             discriminator_history.append(d_loss.item())
             d_loss.backward()
@@ -61,7 +60,6 @@ def train(discriminator, generator, train, device):
             ones = torch.ones((minibatch_size, 1)).to(device=device)
             g_loss = criterion(
                 discriminator(generator(muh_noise_two)), ones)
-            # print(f"Generator loss: {g_loss}")
 
             generator_history.append(g_loss.item())
             g_loss.backward()
@@ -69,7 +67,7 @@ def train(discriminator, generator, train, device):
     plot_train_graph(generator_history, discriminator_history)
     torch.save(generator.state_dict(), './generator')
     images = get_visualization(
-        10, generator, noise_length=noise_length, device=device)
+        visualization_samples, generator, noise_length=noise_length, device=device)
     display_image_grid(images=[img for img in images])
 
 
@@ -83,13 +81,5 @@ if __name__ == "__main__":
     discriminator = Discriminator().to(device=device)
 
     train_set = create_dataloaders_mnist(minibatch_size)
-
-    # train_set = [next(iter(train_set))[0, :, :] for i in range(10)]
-
-    # x = [torch.squeeze(img).cpu().detach().numpy() for img in iter(train_set)]
-
-    # display_image_grid(images=x)
-
-    # exit()
 
     train(discriminator, generator, train_set, device)

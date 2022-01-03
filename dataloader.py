@@ -28,11 +28,13 @@ class MNISTDataset(torch.utils.data.Dataset):
 def create_dataloaders_mnist(batch_size):
 
     transform = transforms.Compose([
-            transforms.ToTensor(),
-            transforms.Normalize(mean=(0.5,), std=(0.5,))
+        transforms.ToTensor(),
+        transforms.Normalize(mean=(0.5,), std=(0.5,))
     ])
 
-    train_dataset = datasets.MNIST(root='./data/', train=True, download=True, transform=transform)
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    train_dataset = datasets.MNIST(
+        root='./data/', train=True, download=True, transform=transform)
+    train_loader = torch.utils.data.DataLoader(
+        train_dataset, batch_size=batch_size, shuffle=True)
 
     return train_loader
