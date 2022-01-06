@@ -11,6 +11,6 @@ By adding slight perturbations to a few random noise vectors, we can see in the 
 ---
 ### Visualizations
 
-Here we have perturbations to an initial random noise vector. It is _trivial_ what class the generator was conditioned on when generating the image:
+Here we have perturbations to an initial random noise vector. It is _trivial_ what class the generator was conditioned on when generating each of the images:
 
 ![small perturbation gif](https://github.com/rishabhsamb/torch-gans/blob/master/conditional-gan/gifs/0.4_interpolation_cgan.gif)
